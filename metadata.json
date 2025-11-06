@@ -1,5 +1,8 @@
 {
   "name": "React Hello World",
   "description": "A visually appealing, centered, and responsive 'Hello World' web application built with React and Tailwind CSS, designed to be easily published.",
+  "homepage": "https://<your-username>.github.io/react-hello-world/",
+  "author": "Your Name",
+  "license": "MIT",
   "requestFramePermissions": []
 }
