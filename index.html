@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>React Hello World</title>
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -19,39 +21,67 @@
               'gradient-x': {
                 '0%, 100%': {
                   'background-size': '200% 200%',
-                  'background-position': 'left center'
+                  'background-position': 'left center',
                 },
                 '50%': {
                   'background-size': '200% 200%',
-                  'background-position': 'right center'
-                }
-              }
-            }
+                  'background-position': 'right center',
+                },
+              },
+            },
           },
         },
-      }
+      };
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
-    <!-- 1. Add Babel for in-browser JSX/TSX transpilation -->
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Babel for JSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- 2. Update importmap to correctly resolve React modules -->
-    <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18.2.0",
-    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/"
-  }
-}
-</script>
-</head>
-  <body>
+
+    <!-- React globals -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  </head>
+
+  <body class="font-sans bg-gray-100 min-h-screen flex items-center justify-center">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!-- 3. Change script type to text/babel for transpilation -->
-    <script type="text/babel" data-type="module" src="/index.tsx"></script>
+
+    <!-- Inline React app -->
+    <script type="text/babel" data-presets="typescript,react">
+      const App = () => {
+        const handleClick = () => alert('Hello, World from GitHub Pages!');
+        return (
+          <main className="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center font-sans p-4 transition-colors duration-500">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 sm:p-12 max-w-lg w-full text-center transform hover:scale-105 transition-all duration-300 ease-in-out">
+              <div className="space-y-6">
+                <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400 bg-[length:200%_200%] animate-gradient-x">
+                  Hello, World!
+                </h1>
+                <p className="text-gray-600 dark:text-gray-300 text-lg">
+                  This is a simple, responsive web app built with React and Tailwind CSS.
+                </p>
+                <button
+                  onClick={handleClick}
+                  className="px-8 py-3 bg-gradient-to-r from-blue-500 to-teal-400 text-white font-bold rounded-full hover:from-blue-600 hover:to-teal-500 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1"
+                >
+                  Click Me!
+                </button>
+              </div>
+            </div>
+          </main>
+        );
+      };
+
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<App />);
+    </script>
   </body>
 </html>
