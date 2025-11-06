@@ -1,42 +1,67 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A React Hello World app built with Tailwind CSS." />
+    <title>React Hello World</title>
 
-const App: React.FC = () => {
-  const handleButtonClick = () => {
-    alert('Hello, World from GitHub Pages!');
-  };
+    <!-- Tailwind via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            animation: {
+              'gradient-x': 'gradient-x 5s ease infinite',
+            },
+            keyframes: {
+              'gradient-x': {
+                '0%, 100%': {
+                  'background-size': '200% 200%',
+                  'background-position': 'left center',
+                },
+                '50%': {
+                  'background-size': '200% 200%',
+                  'background-position': 'right center',
+                },
+              },
+            },
+          },
+        },
+      };
+    </script>
 
-  return (
-    <main className="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center font-sans p-4 transition-colors duration-500">
-      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 sm:p-12 max-w-lg w-full text-center transform hover:scale-105 transition-all duration-300 ease-in-out">
-        <div className="space-y-6">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400 animate-gradient-x">
-            Hello, World!
-          </h1>
-          <p className="text-gray-600 dark:text-gray-300 text-lg">
-            This is a simple, responsive web app built with React and Tailwind CSS.
-          </p>
-          <button
-            onClick={handleButtonClick}
-            className="px-8 py-3 bg-gradient-to-r from-blue-500 to-teal-400 text-white font-bold rounded-full hover:from-blue-600 hover:to-teal-500 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1"
-          >
-            Click Me!
-          </button>
-        </div>
-      </div>
-    </main>
-  );
-};
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
 
+    <!-- Babel for JSX + TSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-const rootElement = document.getElementById('root');
-if (!rootElement) {
-  throw new Error("Could not find root element to mount to");
-}
+    <!-- React Import Map -->
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@18.2.0",
+          "react-dom/client": "https://esm.sh/react-dom@18.2.0/client"
+        }
+      }
+    </script>
+  </head>
 
-const root = ReactDOM.createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+  <body class="font-sans">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+    <!-- Load the entry file -->
+    <script type="text/babel" data-presets="typescript,react" src="./index.tsx"></script>
+  </body>
+</html>
